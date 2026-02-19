@@ -1,0 +1,4 @@
+pzmonitor
+.env
+*.exe
+dist/
