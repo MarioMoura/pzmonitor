@@ -22,6 +22,7 @@ type PZCollector struct {
 
 	// Players & game world
 	playersOnline    *prometheus.Desc
+	playerOnline     *prometheus.Desc
 	zombiesLoaded    *prometheus.Desc
 	zombiesSimulated *prometheus.Desc
 	zombiesTotal     *prometheus.Desc
@@ -62,6 +63,7 @@ func New(client *rcon.Client) *PZCollector {
 		avgUpdatePeriod: newDesc("pz_avg_update_period_ms", "Average update period"),
 
 		playersOnline:    newDesc("pz_players_online", "Current connected player count"),
+		playerOnline:     prometheus.NewDesc("pz_player_online", "1 if player is currently connected", []string{"name"}, nil),
 		zombiesLoaded:    newDesc("pz_zombies_loaded", "Currently loaded zombies"),
 		zombiesSimulated: newDesc("pz_zombies_simulated", "Currently simulated zombies"),
 		zombiesTotal:     newDesc("pz_zombies_total", "Total zombies in world"),
@@ -91,6 +93,7 @@ func (c *PZCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.fps
 	ch <- c.avgUpdatePeriod
 	ch <- c.playersOnline
+	ch <- c.playerOnline
 	ch <- c.zombiesLoaded
 	ch <- c.zombiesSimulated
 	ch <- c.zombiesTotal
@@ -133,6 +136,9 @@ func (c *PZCollector) Collect(ch chan<- prometheus.Metric) {
 
 	// Players & game
 	ch <- prometheus.MustNewConstMetric(c.playersOnline, prometheus.GaugeValue, float64(data.PlayerCount))
+	for _, name := range data.PlayerNames {
+		ch <- prometheus.MustNewConstMetric(c.playerOnline, prometheus.GaugeValue, 1, name)
+	}
 	ch <- prometheus.MustNewConstMetric(c.zombiesLoaded, prometheus.GaugeValue, data.Game["zombies-loaded"])
 	ch <- prometheus.MustNewConstMetric(c.zombiesSimulated, prometheus.GaugeValue, data.Game["zombies-simulated"])
 	ch <- prometheus.MustNewConstMetric(c.zombiesTotal, prometheus.GaugeValue, data.Game["zombies-total"])
