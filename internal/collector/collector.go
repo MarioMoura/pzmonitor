@@ -38,9 +38,13 @@ type PZCollector struct {
 	burnedCorpsesToday         *prometheus.Desc
 
 	// Network
-	networkSentBPS       *prometheus.Desc
-	networkReceivedBPS   *prometheus.Desc
-	networkPacketLossTotal *prometheus.Desc
+	networkSentBPS              *prometheus.Desc
+	networkReceivedBPS          *prometheus.Desc
+	networkSentBytes            *prometheus.Desc
+	networkReceivedBytes        *prometheus.Desc
+	networkLastActualBytesSent  *prometheus.Desc
+	networkLastActualBytesRecv  *prometheus.Desc
+	networkPacketLossTotal      *prometheus.Desc
 
 	// Operational
 	scrapeDuration *prometheus.Desc
@@ -79,7 +83,11 @@ func New(client *rcon.Client) *PZCollector {
 
 		networkSentBPS:         newDesc("pz_network_sent_bps", "Bytes per second sent"),
 		networkReceivedBPS:     newDesc("pz_network_received_bps", "Bytes per second received"),
-		networkPacketLossTotal: newDesc("pz_network_packet_loss_total", "Total packet loss"),
+		networkSentBytes:            newDesc("pz_network_sent_bytes", "Total bytes sent"),
+		networkReceivedBytes:        newDesc("pz_network_received_bytes", "Total bytes received"),
+		networkLastActualBytesSent:  newDesc("pz_network_last_actual_bytes_sent", "Last actual bytes sent"),
+		networkLastActualBytesRecv:  newDesc("pz_network_last_actual_bytes_received", "Last actual bytes received"),
+		networkPacketLossTotal:      newDesc("pz_network_packet_loss_total", "Total packet loss"),
 
 		scrapeDuration: newDesc("pz_scrape_duration_seconds", "Time taken for the RCON scrape"),
 	}
@@ -107,6 +115,10 @@ func (c *PZCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.burnedCorpsesToday
 	ch <- c.networkSentBPS
 	ch <- c.networkReceivedBPS
+	ch <- c.networkSentBytes
+	ch <- c.networkReceivedBytes
+	ch <- c.networkLastActualBytesSent
+	ch <- c.networkLastActualBytesRecv
 	ch <- c.networkPacketLossTotal
 	ch <- c.scrapeDuration
 }
@@ -156,5 +168,9 @@ func (c *PZCollector) Collect(ch chan<- prometheus.Metric) {
 	// Network
 	ch <- prometheus.MustNewConstMetric(c.networkSentBPS, prometheus.GaugeValue, data.Network["sent-bps"])
 	ch <- prometheus.MustNewConstMetric(c.networkReceivedBPS, prometheus.GaugeValue, data.Network["received-bps"])
+	ch <- prometheus.MustNewConstMetric(c.networkSentBytes, prometheus.GaugeValue, data.Network["sent-bytes"])
+	ch <- prometheus.MustNewConstMetric(c.networkReceivedBytes, prometheus.GaugeValue, data.Network["received-bytes"])
+	ch <- prometheus.MustNewConstMetric(c.networkLastActualBytesSent, prometheus.GaugeValue, data.Network["last-actual-bytes-sent"])
+	ch <- prometheus.MustNewConstMetric(c.networkLastActualBytesRecv, prometheus.GaugeValue, data.Network["last-actual-bytes-received"])
 	ch <- prometheus.MustNewConstMetric(c.networkPacketLossTotal, prometheus.GaugeValue, data.Network["packet-loss-total"])
 }
