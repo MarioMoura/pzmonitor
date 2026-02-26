@@ -1,58 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "10.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": { "type": "grafana", "uid": "-- Grafana --" },
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -64,1086 +18,2228 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": null,
+  "id": 0,
   "links": [],
   "panels": [
     {
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
       "id": 100,
+      "panels": [],
       "title": "Server Overview",
       "type": "row"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [
-            { "options": { "0": { "color": "red", "text": "DOWN" }, "1": { "color": "green", "text": "UP" } }, "type": "value" }
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "green",
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "red", "value": null },
-              { "color": "green", "value": 1 }
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
             ]
-          },
-          "color": { "mode": "thresholds" }
+          }
         },
         "overrides": []
       },
-      "gridPos": { "h": 4, "w": 3, "x": 0, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
       "id": 1,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "value"
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
       },
-      "title": "Server Status",
-      "type": "stat",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_server_up",
           "legendFormat": "",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Server Status",
+      "type": "stat"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "thresholds" },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "blue", "value": null }
+              {
+                "color": "blue",
+                "value": 0
+              }
             ]
           },
           "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 4, "w": 3, "x": 3, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 3,
+        "y": 1
+      },
       "id": 2,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "auto"
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "title": "Players Online",
-      "type": "stat",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_players_online",
           "legendFormat": "",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Players Online",
+      "type": "stat"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "thresholds" },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 50 },
-              { "color": "red", "value": 30 }
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 0.9
+              },
+              {
+                "color": "green",
+                "value": 0.99
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 6,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "avg_over_time(pz_server_up[$__range])",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Server Uptime",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 0.5
+              },
+              {
+                "color": "green",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 9,
+        "y": 1
+      },
+      "id": 9,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "avg_over_time(clamp_max(pz_players_online, 1)[$__range:])",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Player Uptime",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
             ]
           },
           "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 4, "w": 3, "x": 6, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 1
+      },
       "id": 3,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "auto"
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "title": "Server FPS",
-      "type": "stat",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_fps",
           "legendFormat": "",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Server FPS",
+      "type": "stat"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "thresholds" },
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 10 },
-              { "color": "red", "value": 20 }
-            ]
+          "color": {
+            "mode": "thresholds"
           },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 4, "w": 3, "x": 9, "y": 1 },
-      "id": 4,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "auto"
-      },
-      "title": "Avg Update Period",
-      "type": "stat",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_avg_update_period_ms",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ]
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "thresholds" },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 0.5 },
-              { "color": "red", "value": 1 }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 4, "w": 3, "x": 12, "y": 1 },
-      "id": 5,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "auto"
-      },
-      "title": "Scrape Duration",
-      "type": "stat",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_scrape_duration_seconds",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ]
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "thresholds" },
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "purple", "value": null }
+              {
+                "color": "purple",
+                "value": 0
+              }
             ]
           },
           "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 4, "w": 3, "x": 15, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 15,
+        "y": 1
+      },
       "id": 6,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "auto"
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "title": "Loaded Cells",
-      "type": "stat",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_loaded_cells",
           "legendFormat": "",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Loaded Cells",
+      "type": "stat"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "thresholds" },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "orange", "value": null }
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 0.5
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 21,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_scrape_duration_seconds",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Scrape Duration",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
             ]
           },
           "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 4, "w": 3, "x": 18, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 5
+      },
+      "id": 50,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "sum_over_time(pz_zombies_killed_today[10y])",
+          "instant": true,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Zombies Killed",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "fixed"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 5
+      },
+      "id": 51,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "increase(pz_zombies_killed_today[$__range])",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Zombies Killed (range)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 5
+      },
       "id": 7,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "textMode": "auto"
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "title": "Animals",
-      "type": "stat",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_animals_instances",
           "legendFormat": "",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Animals",
+      "type": "stat"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "thresholds" },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
           "max": 1,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "red", "value": null },
-              { "color": "yellow", "value": 0.9 },
-              { "color": "green", "value": 0.99 }
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 0.7
+              },
+              {
+                "color": "red",
+                "value": 0.9
+              }
             ]
           },
           "unit": "percentunit"
         },
         "overrides": []
       },
-      "gridPos": { "h": 4, "w": 3, "x": 21, "y": 1 },
-      "id": 8,
-      "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "sizing": "auto"
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 15,
+        "y": 5
       },
-      "title": "Uptime",
-      "type": "gauge",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "avg_over_time(pz_server_up[$__range])",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ]
-    },
-    {
-      "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 5 },
-      "id": 101,
-      "title": "Performance",
-      "type": "row"
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "palette-classic" },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 15,
-            "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
-            "lineInterpolation": "smooth",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
-          },
-          "unit": "none",
-          "min": 0
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 6 },
-      "id": 10,
-      "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "min"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "none" }
-      },
-      "title": "Server FPS",
-      "type": "timeseries",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_fps",
-          "legendFormat": "FPS",
-          "refId": "A"
-        }
-      ]
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "palette-classic" },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 15,
-            "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
-            "lineInterpolation": "smooth",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
-          },
-          "unit": "ms",
-          "min": 0
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 6 },
-      "id": 11,
-      "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "max"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "none" }
-      },
-      "title": "Avg Update Period",
-      "type": "timeseries",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_avg_update_period_ms",
-          "legendFormat": "Update Period",
-          "refId": "A"
-        }
-      ]
-    },
-    {
-      "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 14 },
-      "id": 102,
-      "title": "JVM Memory",
-      "type": "row"
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "thresholds" },
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 0.7 },
-              { "color": "red", "value": 0.9 }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 8, "w": 6, "x": 0, "y": 15 },
       "id": 20,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
         "orientation": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "title": "JVM Memory Usage",
-      "type": "gauge",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_memory_used_megabytes / pz_memory_max_megabytes",
           "legendFormat": "Used / Max",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "JVM Memory Usage",
+      "type": "gauge"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 21,
+        "y": 5
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_avg_update_period_ms",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Avg Update Period",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 101,
+      "panels": [],
+      "title": "Performance",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 20,
-            "gradientMode": "scheme",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
+            "scaleDistribution": {
+              "type": "linear"
+            },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
-          "unit": "decmbytes",
-          "min": 0
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "min"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_fps",
+          "legendFormat": "FPS",
+          "refId": "A"
+        }
+      ],
+      "title": "Server FPS",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_avg_update_period_ms",
+          "legendFormat": "Update Period",
+          "refId": "A"
+        }
+      ],
+      "title": "Avg Update Period",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 102,
+      "panels": [],
+      "title": "JVM Memory",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decmbytes"
         },
         "overrides": [
           {
-            "matcher": { "id": "byName", "options": "Max" },
+            "matcher": {
+              "id": "byName",
+              "options": "Used"
+            },
             "properties": [
-              { "id": "custom.lineStyle", "value": { "dash": [10, 10], "fill": "dash" } },
-              { "id": "custom.fillOpacity", "value": 0 },
-              { "id": "color", "value": { "fixedColor": "red", "mode": "fixed" } }
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
             ]
           },
           {
-            "matcher": { "id": "byName", "options": "Total" },
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
             "properties": [
-              { "id": "custom.lineStyle", "value": { "dash": [5, 5], "fill": "dash" } },
-              { "id": "custom.fillOpacity", "value": 0 },
-              { "id": "color", "value": { "fixedColor": "yellow", "mode": "fixed" } }
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [10, 10],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [5, 5],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
             ]
           }
         ]
       },
-      "gridPos": { "h": 8, "w": 18, "x": 6, "y": 15 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
       "id": 21,
       "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "max"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "desc" }
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
       },
-      "title": "JVM Memory",
-      "type": "timeseries",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_memory_used_megabytes",
           "legendFormat": "Used",
           "refId": "A"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_memory_total_megabytes",
           "legendFormat": "Total",
           "refId": "B"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_memory_max_megabytes",
           "legendFormat": "Max",
           "refId": "C"
         }
-      ]
+      ],
+      "title": "JVM Memory",
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 23 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
       "id": 103,
+      "panels": [],
       "title": "Players & World",
       "type": "row"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 15,
             "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "stepAfter",
             "lineWidth": 2,
             "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
+            "scaleDistribution": {
+              "type": "linear"
+            },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
-          "unit": "none",
+          "decimals": 0,
+          "mappings": [],
           "min": 0,
-          "decimals": 0
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
       "id": 30,
       "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "max"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "none" }
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "title": "Players Online",
-      "type": "timeseries",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "sum(pz_players_online)",
           "legendFormat": "Players",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Players Online",
+      "type": "timeseries"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
           "custom": {
+            "axisPlacement": "auto",
             "fillOpacity": 80,
-            "lineWidth": 0
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "mappings": [
-            { "options": { "0": { "color": "transparent", "text": "Offline" }, "1": { "color": "green", "text": "Online" } }, "type": "value" }
+            {
+              "options": {
+                "0": {
+                  "color": "transparent",
+                  "text": "Offline"
+                },
+                "1": {
+                  "color": "green",
+                  "text": "Online"
+                }
+              },
+              "type": "value"
+            }
           ],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "transparent", "value": null },
-              { "color": "green", "value": 1 }
+              {
+                "color": "transparent",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
             ]
           },
-          "color": { "mode": "fixed", "fixedColor": "green" },
-          "unit": "none",
-          "min": 0,
-          "max": 1
+          "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 28
+      },
       "id": 34,
       "options": {
-        "mergeValues": true,
-        "showValue": "auto",
         "alignValue": "center",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mergeValues": true,
         "rowHeight": 0.8,
-        "legend": { "displayMode": "list", "placement": "bottom" },
-        "tooltip": { "mode": "single", "sort": "none" }
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "title": "Player Sessions",
-      "type": "state-timeline",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_player_online",
           "legendFormat": "{{name}}",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Player Sessions",
+      "type": "state-timeline"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "thresholds" },
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "decimals": 0,
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null }
+              {
+                "color": "green",
+                "value": 0
+              }
             ]
           },
-          "unit": "s",
-          "decimals": 0
+          "unit": "s"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "custom.footer.reducers",
+                "value": ["sum"]
+              }
+            ]
+          }
+        ]
       },
-      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 32 },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 0,
+        "y": 36
+      },
       "id": 35,
       "options": {
-        "showHeader": true,
         "cellHeight": "sm",
-        "sortBy": [{ "displayName": "Playtime", "desc": true }],
-        "footer": { "show": true, "reducer": ["sum"], "fields": ["Value"] }
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Playtime"
+          }
+        ]
       },
-      "title": "Playtime by Player",
-      "type": "table",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "count_over_time(pz_player_online[$__range]) * 10",
-          "legendFormat": "",
-          "refId": "A",
+          "format": "table",
           "instant": true,
-          "format": "table"
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
+      "title": "Playtime by Player",
       "transformations": [
         {
           "id": "organize",
           "options": {
-            "excludeByName": { "Time": true, "instance": true, "job": true },
-            "renameByName": { "name": "Player", "Value": "Playtime" }
+            "excludeByName": {
+              "Time": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "Value": "Playtime",
+              "name": "Player"
+            }
           }
         }
-      ]
+      ],
+      "type": "table"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 15,
             "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
+            "scaleDistribution": {
+              "type": "linear"
+            },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
-          "unit": "none",
-          "min": 0
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
-      "id": 31,
-      "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "max"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "desc" }
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 4,
+        "y": 36
       },
-      "title": "Zombies",
-      "type": "timeseries",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_zombies_total",
-          "legendFormat": "Total",
-          "refId": "A"
-        },
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_zombies_loaded",
-          "legendFormat": "Loaded",
-          "refId": "B"
-        },
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_zombies_simulated",
-          "legendFormat": "Simulated",
-          "refId": "C"
-        }
-      ]
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "palette-classic" },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 15,
-            "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
-            "lineInterpolation": "smooth",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
-          },
-          "unit": "none",
-          "min": 0
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 32 },
       "id": 32,
       "options": {
-        "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "none" }
+        "legend": {
+          "calcs": ["lastNotNull"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "title": "Animals & Loaded Cells",
-      "type": "timeseries",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_animals_instances",
           "legendFormat": "Animals",
           "refId": "A"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_loaded_cells",
           "legendFormat": "Loaded Cells",
           "refId": "B"
         }
-      ]
+      ],
+      "title": "Animals & Loaded Cells",
+      "type": "timeseries"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 15,
             "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
+            "scaleDistribution": {
+              "type": "linear"
+            },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
-          "unit": "none",
+          "mappings": [],
           "min": 0,
-          "decimals": 0
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 31,
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_zombies_total",
+          "legendFormat": "Total",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_zombies_loaded",
+          "legendFormat": "Loaded",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_zombies_simulated",
+          "legendFormat": "Simulated",
+          "refId": "C"
+        }
+      ],
+      "title": "Zombies",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": [
           {
-            "matcher": { "id": "byName", "options": "Killed by Zombies" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "yellow", "mode": "fixed" } }]
+            "matcher": {
+              "id": "byName",
+              "options": "Killed by Zombies"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
           },
           {
-            "matcher": { "id": "byName", "options": "Killed by Players" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "dark-red", "mode": "fixed" } }]
+            "matcher": {
+              "id": "byName",
+              "options": "Killed by Players"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
           },
           {
-            "matcher": { "id": "byName", "options": "Killed by Fire" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "dark-orange", "mode": "fixed" } }]
+            "matcher": {
+              "id": "byName",
+              "options": "Killed by Fire"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
           },
           {
-            "matcher": { "id": "byName", "options": "Zombified" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "dark-purple", "mode": "fixed" } }]
+            "matcher": {
+              "id": "byName",
+              "options": "Zombified"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
           },
           {
-            "matcher": { "id": "byName", "options": "Zombies Killed by Fire" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "light-blue", "mode": "fixed" } }]
+            "matcher": {
+              "id": "byName",
+              "options": "Zombies Killed by Fire"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 32 },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 44
+      },
       "id": 33,
       "options": {
-        "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "desc" }
+        "legend": {
+          "calcs": ["lastNotNull"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
       },
-      "title": "Daily Events",
-      "type": "timeseries",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_zombies_killed_today",
           "legendFormat": "Zombies Killed",
           "refId": "A"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_players_killed_by_zombie_today",
           "legendFormat": "Killed by Zombies",
           "refId": "B"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_players_killed_by_player_today",
           "legendFormat": "Killed by Players",
           "refId": "C"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_players_killed_by_fire_today",
           "legendFormat": "Killed by Fire",
           "refId": "D"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_zombified_players_today",
           "legendFormat": "Zombified",
           "refId": "E"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_burned_corpses_today",
           "legendFormat": "Burned Corpses",
           "refId": "F"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_zombies_killed_by_fire_today",
           "legendFormat": "Zombies Killed by Fire",
           "refId": "G"
         }
-      ]
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "fixed", "fixedColor": "green" },
-          "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
-          "unit": "none",
-          "decimals": 0
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 40 },
-      "id": 50,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "textMode": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
-      },
-      "title": "Total Zombies Killed",
-      "type": "stat",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "sum_over_time(pz_zombies_killed_today[10y])",
-          "legendFormat": "",
-          "refId": "A",
-          "instant": true
-        }
-      ]
-    },
-    {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-      "fieldConfig": {
-        "defaults": {
-          "color": { "mode": "fixed", "fixedColor": "yellow" },
-          "thresholds": { "mode": "absolute", "steps": [{ "color": "yellow", "value": null }] },
-          "unit": "none",
-          "decimals": 0
-        },
-        "overrides": []
-      },
-      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 40 },
-      "id": 51,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "textMode": "auto",
-        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
-      },
-      "title": "Zombies Killed (range)",
-      "type": "stat",
-      "targets": [
-        {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "increase(pz_zombies_killed_today[$__range])",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ]
+      ],
+      "title": "Daily Events",
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 44 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
       "id": 104,
+      "panels": [],
       "title": "Network",
       "type": "row"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "description": "Network traffic (receive and transmit) in bytes per second",
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": true,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 20,
+            "fillOpacity": 40,
             "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
+            "scaleDistribution": {
+              "type": "linear"
+            },
             "showPoints": "never",
             "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
           },
-          "unit": "decbytes"
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(255, 255, 255, 0.3)",
+                "value": null
+              }
+            ]
+          },
+          "unit": "Bps"
         },
         "overrides": [
           {
-            "matcher": { "id": "byName", "options": "Sent" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "blue", "mode": "fixed" } }]
-          },
-          {
-            "matcher": { "id": "byName", "options": "Received" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "green", "mode": "fixed" } }]
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*Tx.*/"
+            },
+            "properties": [
+              {
+                "id": "custom.transform",
+                "value": "negative-Y"
+              }
+            ]
           }
         ]
       },
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 41 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 56
+      },
       "id": 40,
       "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "max"], "displayMode": "list", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "desc" }
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "title": "Network Throughput",
-      "type": "timeseries",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "-pz_network_sent_bytes",
-          "legendFormat": "Sent",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_network_received_bytes",
+          "legendFormat": "Rx",
           "refId": "A"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
-          "expr": "pz_network_received_bytes",
-          "legendFormat": "Received",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "expr": "pz_network_sent_bytes",
+          "legendFormat": "Tx",
           "refId": "B"
         }
-      ]
+      ],
+      "title": "Network Throughput",
+      "type": "timeseries"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 15,
             "gradientMode": "none",
-            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
-            "scaleDistribution": { "type": "linear" },
+            "scaleDistribution": {
+              "type": "linear"
+            },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
-            "stacking": { "group": "A", "mode": "none" },
-            "thresholdsStyle": { "mode": "off" }
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
-          "unit": "none",
-          "min": 0
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": []
       },
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 41 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 56
+      },
       "id": 41,
       "options": {
-        "legend": { "calcs": ["mean", "lastNotNull", "max"], "displayMode": "table", "placement": "bottom" },
-        "tooltip": { "mode": "multi", "sort": "none" }
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "title": "Packet Loss",
-      "type": "timeseries",
+      "pluginVersion": "12.3.3",
       "targets": [
         {
-          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "pz_network_packet_loss_total",
           "legendFormat": "Packet Loss",
           "refId": "A"
         }
-      ]
+      ],
+      "title": "Packet Loss",
+      "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "30s",
-  "schemaVersion": 39,
+  "schemaVersion": 42,
   "tags": ["project-zomboid", "pzmonitor", "gaming"],
-  "templating": { "list": [] },
-  "time": { "from": "now-6h", "to": "now" },
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
   "timepicker": {},
   "timezone": "",
   "title": "Project Zomboid Server",
   "uid": "pzmonitor",
-  "version": 1
+  "version": 2
 }
