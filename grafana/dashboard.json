@@ -886,7 +886,7 @@
         "overrides": [
           {
             "matcher": { "id": "byName", "options": "Killed by Zombies" },
-            "properties": [{ "id": "color", "value": { "fixedColor": "dark-green", "mode": "fixed" } }]
+            "properties": [{ "id": "color", "value": { "fixedColor": "yellow", "mode": "fixed" } }]
           },
           {
             "matcher": { "id": "byName", "options": "Killed by Players" },
@@ -899,6 +899,10 @@
           {
             "matcher": { "id": "byName", "options": "Zombified" },
             "properties": [{ "id": "color", "value": { "fixedColor": "dark-purple", "mode": "fixed" } }]
+          },
+          {
+            "matcher": { "id": "byName", "options": "Zombies Killed by Fire" },
+            "properties": [{ "id": "color", "value": { "fixedColor": "light-blue", "mode": "fixed" } }]
           }
         ]
       },
@@ -946,6 +950,12 @@
           "expr": "pz_burned_corpses_today",
           "legendFormat": "Burned Corpses",
           "refId": "F"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "expr": "pz_zombies_killed_by_fire_today",
+          "legendFormat": "Zombies Killed by Fire",
+          "refId": "G"
         }
       ]
     },

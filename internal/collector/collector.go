@@ -34,6 +34,7 @@ type PZCollector struct {
 	playersKilledByZombieToday *prometheus.Desc
 	playersKilledByPlayerToday *prometheus.Desc
 	playersKilledByFireToday   *prometheus.Desc
+	zombiesKilledByFireToday   *prometheus.Desc
 	zombifiedPlayersToday      *prometheus.Desc
 	burnedCorpsesToday         *prometheus.Desc
 
@@ -78,6 +79,7 @@ func New(client *rcon.Client) *PZCollector {
 		playersKilledByZombieToday: newDesc("pz_players_killed_by_zombie_today", "Players killed by zombies today"),
 		playersKilledByPlayerToday: newDesc("pz_players_killed_by_player_today", "Players killed by players today"),
 		playersKilledByFireToday:   newDesc("pz_players_killed_by_fire_today", "Players killed by fire today"),
+		zombiesKilledByFireToday:   newDesc("pz_zombies_killed_by_fire_today", "Zombies killed by fire today"),
 		zombifiedPlayersToday:      newDesc("pz_zombified_players_today", "Zombified players today"),
 		burnedCorpsesToday:         newDesc("pz_burned_corpses_today", "Burned corpses today"),
 
@@ -111,6 +113,7 @@ func (c *PZCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.playersKilledByZombieToday
 	ch <- c.playersKilledByPlayerToday
 	ch <- c.playersKilledByFireToday
+	ch <- c.zombiesKilledByFireToday
 	ch <- c.zombifiedPlayersToday
 	ch <- c.burnedCorpsesToday
 	ch <- c.networkSentBPS
@@ -162,6 +165,7 @@ func (c *PZCollector) Collect(ch chan<- prometheus.Metric) {
 	ch <- prometheus.MustNewConstMetric(c.playersKilledByZombieToday, prometheus.GaugeValue, data.Connection["players-killed-by-zombie-today"])
 	ch <- prometheus.MustNewConstMetric(c.playersKilledByPlayerToday, prometheus.GaugeValue, data.Connection["players-killed-by-player-today"])
 	ch <- prometheus.MustNewConstMetric(c.playersKilledByFireToday, prometheus.GaugeValue, data.Connection["players-killed-by-fire-today"])
+	ch <- prometheus.MustNewConstMetric(c.zombiesKilledByFireToday, prometheus.GaugeValue, data.Connection["zombies-killed-by-fire-today"])
 	ch <- prometheus.MustNewConstMetric(c.zombifiedPlayersToday, prometheus.GaugeValue, data.Connection["zombified-players-today"])
 	ch <- prometheus.MustNewConstMetric(c.burnedCorpsesToday, prometheus.GaugeValue, data.Connection["burned-corpses-today"])
 
