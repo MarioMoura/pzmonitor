@@ -37,7 +37,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -102,7 +102,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_server_up",
           "legendFormat": "",
@@ -115,7 +115,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -163,7 +163,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_players_online",
           "legendFormat": "",
@@ -176,7 +176,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -232,7 +232,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "avg_over_time(pz_server_up[$__range])",
           "legendFormat": "",
@@ -245,7 +245,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -301,7 +301,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "avg_over_time(clamp_max(pz_players_online, 1)[$__range:])",
           "legendFormat": "",
@@ -314,7 +314,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -370,7 +370,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_fps",
           "legendFormat": "",
@@ -383,7 +383,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -431,7 +431,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_loaded_cells",
           "legendFormat": "",
@@ -444,7 +444,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -500,7 +500,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_scrape_duration_seconds",
           "legendFormat": "",
@@ -513,7 +513,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -563,7 +563,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum_over_time(pz_zombies_killed_today[10y])",
           "instant": true,
@@ -577,7 +577,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -627,7 +627,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "increase(pz_zombies_killed_today[$__range])",
           "legendFormat": "",
@@ -640,7 +640,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -688,7 +688,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_animals_instances",
           "legendFormat": "",
@@ -701,7 +701,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -757,7 +757,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_memory_used_megabytes / pz_memory_max_megabytes",
           "legendFormat": "Used / Max",
@@ -770,7 +770,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -826,7 +826,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_avg_update_period_ms",
           "legendFormat": "",
@@ -852,7 +852,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -937,7 +937,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_fps",
           "legendFormat": "FPS",
@@ -950,7 +950,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1035,7 +1035,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_avg_update_period_ms",
           "legendFormat": "Update Period",
@@ -1061,7 +1061,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1214,7 +1214,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_memory_used_megabytes",
           "legendFormat": "Used",
@@ -1223,7 +1223,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_memory_total_megabytes",
           "legendFormat": "Total",
@@ -1232,7 +1232,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_memory_max_megabytes",
           "legendFormat": "Max",
@@ -1258,7 +1258,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1344,7 +1344,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "sum(pz_players_online)",
           "legendFormat": "Players",
@@ -1357,7 +1357,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1439,7 +1439,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_player_online",
           "legendFormat": "{{name}}",
@@ -1452,7 +1452,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1519,7 +1519,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "count_over_time(pz_player_online[$__range]) * 10",
           "format": "table",
@@ -1550,7 +1550,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1635,7 +1635,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_animals_instances",
           "legendFormat": "Animals",
@@ -1644,7 +1644,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_loaded_cells",
           "legendFormat": "Loaded Cells",
@@ -1657,7 +1657,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1742,7 +1742,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_zombies_total",
           "legendFormat": "Total",
@@ -1751,7 +1751,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_zombies_loaded",
           "legendFormat": "Loaded",
@@ -1760,7 +1760,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_zombies_simulated",
           "legendFormat": "Simulated",
@@ -1773,7 +1773,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1935,7 +1935,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_zombies_killed_today",
           "legendFormat": "Zombies Killed",
@@ -1944,7 +1944,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_players_killed_by_zombie_today",
           "legendFormat": "Killed by Zombies",
@@ -1953,7 +1953,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_players_killed_by_player_today",
           "legendFormat": "Killed by Players",
@@ -1962,7 +1962,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_players_killed_by_fire_today",
           "legendFormat": "Killed by Fire",
@@ -1971,7 +1971,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_zombified_players_today",
           "legendFormat": "Zombified",
@@ -1980,7 +1980,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_burned_corpses_today",
           "legendFormat": "Burned Corpses",
@@ -1989,7 +1989,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_zombies_killed_by_fire_today",
           "legendFormat": "Zombies Killed by Fire",
@@ -2015,7 +2015,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Network traffic (receive and transmit) in bytes per second",
       "fieldConfig": {
@@ -2108,7 +2108,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_network_received_bytes",
           "legendFormat": "Rx",
@@ -2117,7 +2117,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_network_sent_bytes",
           "legendFormat": "Tx",
@@ -2130,7 +2130,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2215,7 +2215,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "pz_network_packet_loss_total",
           "legendFormat": "Packet Loss",
