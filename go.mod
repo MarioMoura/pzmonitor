@@ -2,10 +2,7 @@ module github.com/pzmonitor
 
 go 1.23
 
-require (
-	github.com/gorcon/rcon v1.4.0
-	github.com/prometheus/client_golang v1.20.5
-)
+require github.com/prometheus/client_golang v1.20.5
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect

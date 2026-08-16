@@ -2,9 +2,12 @@ package rcon
 
 import (
 	"fmt"
-
-	gorcon "github.com/gorcon/rcon"
+	"time"
 )
+
+// defaultTimeout bounds each network operation. PZ produces stats
+// responses on a later game tick, so reads can take a few seconds.
+const defaultTimeout = 10 * time.Second
 
 // Client wraps an RCON connection to a Project Zomboid server.
 type Client struct {
@@ -20,7 +23,7 @@ func NewClient(addr, password string) *Client {
 // QueryAll connects to the server, executes all stat commands, and returns parsed results.
 // The connection is opened and closed within this call.
 func (c *Client) QueryAll() (*ServerData, error) {
-	conn, err := gorcon.Dial(c.addr, c.password)
+	conn, err := dialConn(c.addr, c.password, defaultTimeout)
 	if err != nil {
 		return nil, fmt.Errorf("rcon dial: %w", err)
 	}
@@ -29,7 +32,7 @@ func (c *Client) QueryAll() (*ServerData, error) {
 	data := &ServerData{}
 
 	// Players
-	resp, err := conn.Execute("players")
+	resp, err := conn.execute("players")
 	if err != nil {
 		return nil, fmt.Errorf("rcon execute players: %w", err)
 	}
@@ -47,7 +50,7 @@ func (c *Client) QueryAll() (*ServerData, error) {
 	}
 
 	for _, cat := range categories {
-		resp, err := conn.Execute(cat.cmd)
+		resp, err := conn.execute(cat.cmd)
 		if err != nil {
 			return nil, fmt.Errorf("rcon execute %q: %w", cat.cmd, err)
 		}
