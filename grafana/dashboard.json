@@ -647,9 +647,23 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "increase(pz_zombies_killed_today[$__range])",
+          "expr": "increase(pz_zombies_killed_today[$__interval])",
+          "interval": "10m",
           "legendFormat": "",
           "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "cumulative": {
+              "field": "Value",
+              "reducer": "sum"
+            },
+            "mode": "cumulativeFunctions",
+            "replaceFields": true
+          }
         }
       ],
       "title": "Zombies Killed (range)",
@@ -861,12 +875,111 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-red",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisPlacement": "hidden",
+            "fillOpacity": 56,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "Down"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "Up"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "max": 1,
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 60,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.29,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "none",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "min_over_time(up{job=\"pzmonitor\"}[1h])",
+          "interval": "1h",
+          "legendFormat": "Server",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "maxDataPoints": 168,
+      "timeFrom": "7d",
+      "title": "Server Uptime (7d)",
+      "type": "state-timeline"
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 13
       },
       "id": 101,
       "panels": [],
@@ -940,7 +1053,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 10
+        "y": 14
       },
       "id": 10,
       "options": {
@@ -1042,7 +1155,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 10
+        "y": 14
       },
       "id": 11,
       "options": {
@@ -1083,7 +1196,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 22
       },
       "id": 102,
       "panels": [],
@@ -1231,7 +1344,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 23
       },
       "id": 21,
       "options": {
@@ -1290,7 +1403,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 31
       },
       "id": 103,
       "panels": [],
@@ -1365,7 +1478,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 32
       },
       "id": 30,
       "options": {
@@ -1461,7 +1574,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 32
       },
       "id": 34,
       "options": {
@@ -1549,7 +1662,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 36
+        "y": 40
       },
       "id": 35,
       "options": {
@@ -1662,7 +1775,7 @@
         "h": 8,
         "w": 8,
         "x": 4,
-        "y": 36
+        "y": 40
       },
       "id": 32,
       "options": {
@@ -1771,7 +1884,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 36
+        "y": 40
       },
       "id": 31,
       "options": {
@@ -1968,7 +2081,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 44
+        "y": 48
       },
       "id": 33,
       "options": {
@@ -2061,7 +2174,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 59
       },
       "id": 104,
       "panels": [],
@@ -2143,7 +2256,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 56
+        "y": 60
       },
       "id": 40,
       "options": {
@@ -2250,7 +2363,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 56
+        "y": 60
       },
       "id": 41,
       "options": {
