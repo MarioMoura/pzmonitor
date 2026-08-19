@@ -12,7 +12,7 @@ A Prometheus exporter for Project Zomboid dedicated servers. Collects server met
 
 ## Installation
 
-Download the binary for your platform from the [Releases](https://github.com/pzmonitor/pzmonitor/releases) page, then:
+Download the binary for your platform from the [Releases](https://github.com/MarioMoura/pzmonitor/releases) page, then:
 
 ```bash
 chmod +x pzmonitor
@@ -22,7 +22,7 @@ chmod +x pzmonitor
 Or build from source:
 
 ```bash
-go install github.com/pzmonitor@latest
+go install github.com/MarioMoura/pzmonitor@latest
 ```
 
 ## Configuration

@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/pzmonitor/internal/collector"
-	"github.com/pzmonitor/internal/config"
-	"github.com/pzmonitor/internal/rcon"
+	"github.com/MarioMoura/pzmonitor/internal/collector"
+	"github.com/MarioMoura/pzmonitor/internal/config"
+	"github.com/MarioMoura/pzmonitor/internal/rcon"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

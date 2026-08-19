@@ -1,4 +1,4 @@
-module github.com/pzmonitor
+module github.com/MarioMoura/pzmonitor
 
 go 1.23
 

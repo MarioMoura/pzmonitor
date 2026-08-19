@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/pzmonitor/internal/rcon"
+	"github.com/MarioMoura/pzmonitor/internal/rcon"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
