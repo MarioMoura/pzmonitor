@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/MarioMoura/pzmonitor/actions/workflows/ci.yml/badge.svg)](https://github.com/MarioMoura/pzmonitor/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/MarioMoura/pzmonitor)](https://github.com/MarioMoura/pzmonitor/releases)
-[![Go Report Card](https://goreportcard.com/badge/github.com/MarioMoura/pzmonitor)](https://goreportcard.com/report/github.com/MarioMoura/pzmonitor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A Prometheus exporter for Project Zomboid dedicated servers. Collects server metrics via RCON and exposes them on a `/metrics` endpoint.
