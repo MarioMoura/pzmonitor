@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Mario Moura
+  description: Install pzmonitor as a systemd service
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Debian
+      versions: [all]
+    - name: Ubuntu
+      versions: [all]
+dependencies: []

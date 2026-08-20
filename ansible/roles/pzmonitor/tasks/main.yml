@@ -1,0 +1,39 @@
+---
+- name: Create pzmonitor user
+  ansible.builtin.user:
+    name: "{{ pzmonitor_user }}"
+    system: true
+    shell: /usr/sbin/nologin
+    create_home: false
+  when: pzmonitor_create_user
+
+- name: Create pzmonitor directory
+  ansible.builtin.file:
+    path: "{{ pzmonitor_install_dir }}"
+    state: directory
+    owner: "{{ pzmonitor_user }}"
+    group: "{{ pzmonitor_group }}"
+    mode: "0755"
+
+- name: Download pzmonitor binary
+  ansible.builtin.get_url:
+    url: "https://github.com/MarioMoura/pzmonitor/releases/download/v{{ pzmonitor_version }}/pzmonitor_{{ pzmonitor_version }}_linux_{{ pzmonitor_arch }}"
+    dest: "{{ pzmonitor_install_dir }}/pzmonitor"
+    owner: "{{ pzmonitor_user }}"
+    group: "{{ pzmonitor_group }}"
+    mode: "0755"
+  notify: Restart pzmonitor
+
+- name: Install pzmonitor systemd service
+  ansible.builtin.template:
+    src: pzmonitor.service.j2
+    dest: /etc/systemd/system/pzmonitor.service
+    mode: "0600"
+  notify: Restart pzmonitor
+
+- name: Enable and start pzmonitor service
+  ansible.builtin.systemd:
+    name: pzmonitor
+    enabled: true
+    state: started
+    daemon_reload: true

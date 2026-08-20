@@ -1,4 +1,4 @@
-pzmonitor
+/pzmonitor
 .env
 *.exe
 dist/

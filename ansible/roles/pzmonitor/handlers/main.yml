@@ -1,0 +1,5 @@
+---
+- name: Restart pzmonitor
+  ansible.builtin.systemd:
+    name: pzmonitor
+    state: restarted

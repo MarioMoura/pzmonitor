@@ -1,0 +1,21 @@
+[Unit]
+Description=Project Zomboid RCON Prometheus Exporter
+After=network.target{% if pzmonitor_after_unit %} {{ pzmonitor_after_unit }}{% endif %}
+
+[Service]
+Type=simple
+User={{ pzmonitor_user }}
+Group={{ pzmonitor_group }}
+ExecStart={{ pzmonitor_install_dir }}/pzmonitor
+Environment=PZMONITOR_RCON_HOST={{ pzmonitor_rcon_host }}
+Environment=PZMONITOR_RCON_PORT={{ pzmonitor_rcon_port }}
+Environment=PZMONITOR_RCON_PASSWORD={{ pzmonitor_rcon_password }}
+Environment=PZMONITOR_LISTEN_ADDR={{ pzmonitor_listen_addr }}
+{% for k, v in pzmonitor_env.items() %}
+Environment={{ k }}={{ v }}
+{% endfor %}
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

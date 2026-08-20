@@ -1,0 +1,16 @@
+---
+pzmonitor_version: "0.1.6"
+pzmonitor_arch: amd64
+pzmonitor_user: pzmonitor
+pzmonitor_group: "{{ pzmonitor_user }}"
+pzmonitor_create_user: true
+pzmonitor_install_dir: /opt/pzmonitor
+pzmonitor_port: 9103
+pzmonitor_listen_addr: ":{{ pzmonitor_port }}"
+pzmonitor_rcon_host: 127.0.0.1
+pzmonitor_rcon_port: 27015
+pzmonitor_rcon_password: ""
+# Extra PZMONITOR_* env vars for the unit, e.g. {PZMONITOR_SCRAPE_INTERVAL: "30s"}
+pzmonitor_env: {}
+# systemd unit the exporter should start after
+pzmonitor_after_unit: ""
