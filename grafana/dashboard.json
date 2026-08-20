@@ -510,14 +510,15 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "increase(pz_players_killed_by_zombie_today[10y]) + increase(pz_players_killed_by_player_today[10y]) + increase(pz_players_killed_by_fire_today[10y])",
+          "expr": "pz_players_killed_by_zombie_today + pz_players_killed_by_fire_today",
           "instant": true,
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Player Deaths",
-      "type": "stat"
+      "title": "Player Deaths Today",
+      "type": "stat",
+      "description": "Deaths by zombies and fire as reported by PZ stats. The \"killed by player\" stat is excluded: it increments on animal deaths (B42 bug)."
     },
     {
       "datasource": {
@@ -2190,15 +2191,6 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "pz_players_killed_by_player_today",
-          "legendFormat": "Killed by Players",
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
           "expr": "pz_players_killed_by_fire_today",
           "legendFormat": "Killed by Fire",
           "refId": "D"
@@ -2232,7 +2224,8 @@
         }
       ],
       "title": "Daily Events",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "PZ \"today\" counters reset at in-game midnight (GameTime hour rollover), not real-time midnight. \"Killed by players\" is omitted because animals extend IsoPlayer in B42 and inflate it."
     },
     {
       "collapsed": false,
