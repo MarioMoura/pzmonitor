@@ -1,6 +1,6 @@
 [Unit]
 Description=Project Zomboid RCON Prometheus Exporter
-After=network.target{% if pzmonitor_after_unit %} {{ pzmonitor_after_unit }}{% endif %}
+After=network.target{{ ' ' ~ pzmonitor_after_unit if pzmonitor_after_unit else '' }}
 
 [Service]
 Type=simple
