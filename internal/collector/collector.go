@@ -30,7 +30,7 @@ type PZCollector struct {
 	animalsInstances *prometheus.Desc
 
 	// Events (connection stats)
-	zombiesKilledToday        *prometheus.Desc
+	zombiesKilledToday         *prometheus.Desc
 	playersKilledByZombieToday *prometheus.Desc
 	playersKilledByPlayerToday *prometheus.Desc
 	playersKilledByFireToday   *prometheus.Desc
@@ -39,13 +39,13 @@ type PZCollector struct {
 	burnedCorpsesToday         *prometheus.Desc
 
 	// Network
-	networkSentBPS              *prometheus.Desc
-	networkReceivedBPS          *prometheus.Desc
-	networkSentBytes            *prometheus.Desc
-	networkReceivedBytes        *prometheus.Desc
-	networkLastActualBytesSent  *prometheus.Desc
-	networkLastActualBytesRecv  *prometheus.Desc
-	networkPacketLossTotal      *prometheus.Desc
+	networkSentBPS             *prometheus.Desc
+	networkReceivedBPS         *prometheus.Desc
+	networkSentBytes           *prometheus.Desc
+	networkReceivedBytes       *prometheus.Desc
+	networkLastActualBytesSent *prometheus.Desc
+	networkLastActualBytesRecv *prometheus.Desc
+	networkPacketLossTotal     *prometheus.Desc
 
 	// Operational
 	scrapeDuration *prometheus.Desc
@@ -83,13 +83,13 @@ func New(client *rcon.Client) *PZCollector {
 		zombifiedPlayersToday:      newDesc("pz_zombified_players_today", "Zombified players today"),
 		burnedCorpsesToday:         newDesc("pz_burned_corpses_today", "Burned corpses today"),
 
-		networkSentBPS:         newDesc("pz_network_sent_bps", "Bytes per second sent"),
-		networkReceivedBPS:     newDesc("pz_network_received_bps", "Bytes per second received"),
-		networkSentBytes:            newDesc("pz_network_sent_bytes", "Total bytes sent"),
-		networkReceivedBytes:        newDesc("pz_network_received_bytes", "Total bytes received"),
-		networkLastActualBytesSent:  newDesc("pz_network_last_actual_bytes_sent", "Last actual bytes sent"),
-		networkLastActualBytesRecv:  newDesc("pz_network_last_actual_bytes_received", "Last actual bytes received"),
-		networkPacketLossTotal:      newDesc("pz_network_packet_loss_total", "Total packet loss"),
+		networkSentBPS:             newDesc("pz_network_sent_bps", "Bytes per second sent"),
+		networkReceivedBPS:         newDesc("pz_network_received_bps", "Bytes per second received"),
+		networkSentBytes:           newDesc("pz_network_sent_bytes", "Total bytes sent"),
+		networkReceivedBytes:       newDesc("pz_network_received_bytes", "Total bytes received"),
+		networkLastActualBytesSent: newDesc("pz_network_last_actual_bytes_sent", "Last actual bytes sent"),
+		networkLastActualBytesRecv: newDesc("pz_network_last_actual_bytes_received", "Last actual bytes received"),
+		networkPacketLossTotal:     newDesc("pz_network_packet_loss_total", "Total packet loss"),
 
 		scrapeDuration: newDesc("pz_scrape_duration_seconds", "Time taken for the RCON scrape"),
 	}

@@ -11,6 +11,7 @@ type Config struct {
 	RCONPassword string
 	ListenAddr   string
 	LogLevel     string
+	PlayersDB    string
 }
 
 func Load() (*Config, error) {
@@ -20,6 +21,7 @@ func Load() (*Config, error) {
 		RCONPassword: os.Getenv("PZMONITOR_RCON_PASSWORD"),
 		ListenAddr:   envOrDefault("PZMONITOR_LISTEN_ADDR", ":9101"),
 		LogLevel:     envOrDefault("PZMONITOR_LOG_LEVEL", "info"),
+		PlayersDB:    os.Getenv("PZMONITOR_PLAYERS_DB"),
 	}
 
 	if cfg.RCONPassword == "" {

@@ -6,10 +6,10 @@ import (
 
 func TestParsePlayersResponse(t *testing.T) {
 	tests := []struct {
-		name          string
-		input         string
-		wantCount     int
-		wantPlayers   []string
+		name        string
+		input       string
+		wantCount   int
+		wantPlayers []string
 	}{
 		{
 			name:        "single player",
@@ -98,18 +98,18 @@ zombies-updates: 0.0
 zombies-updated: 0.0
 zombies-total: 0.0`,
 			want: map[string]float64{
-				"zombies-loaded":     0.0,
-				"zombies-culled":     0.0,
-				"animals-objects":    0.0,
-				"loaded-cells":       0.0,
-				"players":            0.0,
-				"zombies-simulated":  0.0,
-				"animals-instances":  0.0,
-				"zombies-teleports":  0.0,
-				"players-teleports":  0.0,
-				"zombies-updates":    0.0,
-				"zombies-updated":    0.0,
-				"zombies-total":      0.0,
+				"zombies-loaded":    0.0,
+				"zombies-culled":    0.0,
+				"animals-objects":   0.0,
+				"loaded-cells":      0.0,
+				"players":           0.0,
+				"zombies-simulated": 0.0,
+				"animals-instances": 0.0,
+				"zombies-teleports": 0.0,
+				"players-teleports": 0.0,
+				"zombies-updates":   0.0,
+				"zombies-updated":   0.0,
+				"zombies-total":     0.0,
 			},
 		},
 		{

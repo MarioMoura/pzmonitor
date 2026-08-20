@@ -7,9 +7,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/MarioMoura/pzmonitor/internal/collector"
 	"github.com/MarioMoura/pzmonitor/internal/config"
+	"github.com/MarioMoura/pzmonitor/internal/playersdb"
 	"github.com/MarioMoura/pzmonitor/internal/rcon"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -27,6 +29,11 @@ func main() {
 	client := rcon.NewClient(cfg.RCONAddr(), cfg.RCONPassword)
 	pzCollector := collector.New(client)
 	prometheus.MustRegister(pzCollector)
+
+	if cfg.PlayersDB != "" {
+		prometheus.MustRegister(collector.NewCharacterCollector(playersdb.Open(cfg.PlayersDB), 5*time.Second))
+		slog.Info("players.db metrics enabled", "path", cfg.PlayersDB)
+	}
 
 	mux := http.NewServeMux()
 	mux.Handle("/metrics", promhttp.Handler())

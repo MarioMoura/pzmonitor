@@ -19,6 +19,7 @@ A ready-to-import Grafana dashboard is included at [`grafana/dashboard.json`](gr
 - **Daily events**: zombies killed, players killed (by zombie/player/fire), zombified players, burned corpses
 - **Network**: bytes sent/received per second, packet loss
 - **Operational**: scrape duration, server up/down
+- **Characters** (optional, from `players.db`): hours survived, zombie/survivor kills, dead flag, health, stats (hunger, thirst, fatigue, infection, ...), perk levels, position, profession
 
 ## Installation
 
@@ -46,7 +47,7 @@ Add it to your `requirements.yml` (pin the tag to the release you want):
 collections:
   - name: https://github.com/MarioMoura/pzmonitor.git#ansible
     type: git
-    version: v0.1.6
+    version: v0.2.0-beta.1
 ```
 
 Install and use it:
@@ -74,6 +75,7 @@ Useful variables (see `ansible/roles/pzmonitor/defaults/main.yml` for all):
 | `pzmonitor_port` | `9103` | Metrics listen port |
 | `pzmonitor_rcon_host` / `pzmonitor_rcon_port` | `127.0.0.1` / `27015` | RCON target |
 | `pzmonitor_after_unit` | `""` | systemd unit to start after, e.g. `zomboid.service` |
+| `pzmonitor_players_db` | `""` | Path to `players.db`; enables character metrics |
 | `pzmonitor_env` | `{}` | Extra `PZMONITOR_*` environment variables |
 
 ## Configuration
@@ -87,6 +89,32 @@ All configuration is done via environment variables:
 | `PZMONITOR_RCON_PASSWORD` | *(required)* | RCON password |
 | `PZMONITOR_LISTEN_ADDR` | `:9101` | Address for the HTTP metrics server |
 | `PZMONITOR_LOG_LEVEL` | `info` | Log level (`debug`, `info`, `warn`, `error`) |
+| `PZMONITOR_PLAYERS_DB` | *(unset)* | Path to the server's `players.db` (e.g. `~/Zomboid/Saves/Multiplayer/servertest/players.db`). Enables `pz_character_*` metrics |
+
+### Character metrics
+
+When `PZMONITOR_PLAYERS_DB` is set, every scrape opens the database read-only
+(`immutable=1`, so the running server is never blocked) and decodes each saved
+character. pzmonitor must be able to read the file, which usually means running
+as the same user as the server.
+
+| Metric | Labels | Description |
+|---|---|---|
+| `pz_character_info` | `username`, `name`, `profession`, `steamid` | Always 1 |
+| `pz_character_dead` | `username` | 1 if dead |
+| `pz_character_hours_survived` | `username` | In-game hours |
+| `pz_character_zombie_kills` / `pz_character_survivor_kills` | `username` | Kill counters |
+| `pz_character_health` | `username` | Average body part health, 0-100 |
+| `pz_character_stat` | `username`, `stat` | hunger, thirst, fatigue, panic, zombie_infection, ... |
+| `pz_character_perk_level` | `username`, `perk` | Skill levels |
+| `pz_character_position` | `username`, `axis` | Last saved x/y/z |
+| `pz_character_items` | `username` | Item stacks in inventory |
+| `pz_players_db_up` / `pz_players_db_scrape_duration_seconds` / `pz_players_db_parse_errors` | | Read health |
+
+The save format is undocumented and changes between builds; parsing was
+verified against Build 42.20 (world version 249). A character that fails to
+parse still reports `pz_character_info`, `pz_character_dead` and
+`pz_character_position` from the table columns.
 
 Copy `.env.example` as a reference:
 

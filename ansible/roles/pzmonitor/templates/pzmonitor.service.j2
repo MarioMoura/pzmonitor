@@ -11,6 +11,9 @@ Environment=PZMONITOR_RCON_HOST={{ pzmonitor_rcon_host }}
 Environment=PZMONITOR_RCON_PORT={{ pzmonitor_rcon_port }}
 Environment=PZMONITOR_RCON_PASSWORD={{ pzmonitor_rcon_password }}
 Environment=PZMONITOR_LISTEN_ADDR={{ pzmonitor_listen_addr }}
+{% if pzmonitor_players_db %}
+Environment=PZMONITOR_PLAYERS_DB={{ pzmonitor_players_db }}
+{% endif %}
 {% for k, v in pzmonitor_env.items() %}
 Environment={{ k }}={{ v }}
 {% endfor %}

@@ -19,6 +19,9 @@ archives:
   - formats:
       - binary
 
+release:
+  prerelease: auto
+
 changelog:
   sort: asc
   filters:

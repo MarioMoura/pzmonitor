@@ -1,5 +1,5 @@
 ---
-pzmonitor_version: "0.1.6"
+pzmonitor_version: "0.2.0-beta.1"
 pzmonitor_arch: amd64
 pzmonitor_user: pzmonitor
 pzmonitor_group: "{{ pzmonitor_user }}"
@@ -10,6 +10,8 @@ pzmonitor_listen_addr: ":{{ pzmonitor_port }}"
 pzmonitor_rcon_host: 127.0.0.1
 pzmonitor_rcon_port: 27015
 pzmonitor_rcon_password: ""
+# Path to the server players.db; enables pz_character_* metrics when set
+pzmonitor_players_db: ""
 # Extra PZMONITOR_* env vars for the unit, e.g. {PZMONITOR_SCRAPE_INTERVAL: "30s"}
 pzmonitor_env: {}
 # systemd unit the exporter should start after
