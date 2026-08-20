@@ -35,6 +35,47 @@ Or build from source:
 go install github.com/MarioMoura/pzmonitor@latest
 ```
 
+### Ansible
+
+The repo ships an Ansible collection (`ansible/`) with a `pzmonitor` role that
+downloads the release binary and installs a systemd unit.
+
+Add it to your `requirements.yml` (pin the tag to the release you want):
+
+```yaml
+collections:
+  - name: https://github.com/MarioMoura/pzmonitor.git#ansible
+    type: git
+    version: v0.1.6
+```
+
+Install and use it:
+
+```bash
+ansible-galaxy collection install -r requirements.yml
+```
+
+```yaml
+- hosts: zomboid
+  become: true
+  roles:
+    - role: mariomoura.pzmonitor.pzmonitor
+      vars:
+        pzmonitor_rcon_password: "{{ rcon_password }}"
+```
+
+Useful variables (see `ansible/roles/pzmonitor/defaults/main.yml` for all):
+
+| Variable | Default | Description |
+|---|---|---|
+| `pzmonitor_version` | release version | Release to download |
+| `pzmonitor_user` | `pzmonitor` | User that runs the service (created unless `pzmonitor_create_user: false`) |
+| `pzmonitor_install_dir` | `/opt/pzmonitor` | Where the binary lives |
+| `pzmonitor_port` | `9103` | Metrics listen port |
+| `pzmonitor_rcon_host` / `pzmonitor_rcon_port` | `127.0.0.1` / `27015` | RCON target |
+| `pzmonitor_after_unit` | `""` | systemd unit to start after, e.g. `zomboid.service` |
+| `pzmonitor_env` | `{}` | Extra `PZMONITOR_*` environment variables |
+
 ## Configuration
 
 All configuration is done via environment variables:

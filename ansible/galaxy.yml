@@ -1,0 +1,14 @@
+namespace: mariomoura
+name: pzmonitor
+version: 0.1.6
+readme: README.md
+authors:
+  - Mario Moura
+description: Install and run pzmonitor, a Project Zomboid RCON Prometheus exporter
+license:
+  - MIT
+repository: https://github.com/MarioMoura/pzmonitor
+tags:
+  - monitoring
+  - prometheus
+  - zomboid
