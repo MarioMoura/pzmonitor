@@ -12,7 +12,7 @@ pzmonitor_rcon_port: 27015
 pzmonitor_rcon_password: ""
 # Path to the server players.db; enables pz_character_* metrics when set
 pzmonitor_players_db: ""
-# Extra PZMONITOR_* env vars for the unit, e.g. {PZMONITOR_SCRAPE_INTERVAL: "30s"}
+# Extra PZMONITOR_* env vars for the unit, e.g. {PZMONITOR_LOG_LEVEL: "debug"}
 pzmonitor_env: {}
 # systemd unit the exporter should start after
 pzmonitor_after_unit: ""
